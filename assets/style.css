@@ -1,0 +1,16 @@
+body {
+    box-sizing: border-box;
+}
+
+.navbar {
+    margin-bottom: 15px;
+}
+
+.row {
+    margin: 5px;
+    width: auto;
+}
+
+#submit-btn {
+    margin-top: 10px;
+}
