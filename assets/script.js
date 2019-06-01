@@ -79,7 +79,7 @@ $(document).ready(function () {
                 critterImage.attr("data-state", "still")
 
                 critterDiv.append(critterRating);
-                critterDiv.append(critterImage);
+                critterDiv.prepend(critterImage);
 
                 $("#gif-col").prepend(critterDiv);
             }
@@ -94,13 +94,13 @@ $(document).ready(function () {
 
         if (state === "still") {
 
-            $(this).attr("src", $(this).attr("data-animate"));      
+            $(this).attr("src", $(this).attr("data-animate"));
             $(this).attr("data-state", "animate");
         }
         else {
 
-            $(this).attr("src", $(this).attr("data-still"));      
-            $(this).attr("data-state", "still");            
+            $(this).attr("src", $(this).attr("data-still"));
+            $(this).attr("data-state", "still");
         }
     });
 

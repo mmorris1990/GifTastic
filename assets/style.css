@@ -1,14 +1,16 @@
 body {
     box-sizing: border-box;
+    background-image: url(ocean-background-png-hd-ocean-floor-background-png-1280.png);
+    background-size: cover;
 }
 
 .navbar {
-    margin-bottom: 15px;
+    margin-bottom: 40px;
     padding: 15px 20px;
 }
 
 .row {
-    margin: 5px;
+    margin: 100px 5px;
     width: auto;
 }
 
@@ -16,11 +18,23 @@ body {
     margin-top: 10px;
 }
 
+#buttonLabel {
+    font-size: 30px;
+    font-weight: bolder;
+}
+
 .critterDiv {
     float: left;
-    margin: 0 10px;
+    margin: 10px;
 }
 
 .topic {
     margin: 0 5px;
+    border-radius: 6px;
+    color: grey;
+}
+
+p {
+    font-size: 20px;
+    font-weight: bold;
 }
