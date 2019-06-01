@@ -4,6 +4,7 @@ body {
 
 .navbar {
     margin-bottom: 15px;
+    padding: 15px 20px;
 }
 
 .row {
@@ -13,4 +14,13 @@ body {
 
 #submit-btn {
     margin-top: 10px;
+}
+
+.critterDiv {
+    float: left;
+    margin: 0 10px;
+}
+
+.topic {
+    margin: 0 5px;
 }

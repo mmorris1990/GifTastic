@@ -63,6 +63,10 @@ $(document).ready(function () {
 
                 var critterDiv = $("<div>");
 
+                critterDiv.addClass("critterDiv");
+
+                //critterDiv.css("float", "left");
+
                 var critterRating = $("<p>").text("Rating: " + critterData[i].rating);
 
                 var critterImage = $("<img>");
