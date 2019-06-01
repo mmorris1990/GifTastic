@@ -1,41 +1,63 @@
-$(document).ready(function () {
+$(document).ready(function() {
 
-// VARIABLES
+    // VARIABLES
 
-var topics = ["clown fish" , "cuttlefish" , "hermit crab" , "jellyfish" , "moray eel" , "octopus" , "puffer fish" , "sea turtle" , "stingray" , "whale shark"];
+    var topics = ["clown fish", "cuttlefish", "hermit crab", "jellyfish", "moray eel", "octopus", "puffer fish", "sea turtle", "stingray", "whale shark"];
 
-// FUNCTIONS
+    // FUNCTIONS
 
-// Render initial buttons based on my favorite sea critters
-function renderButtons() {
+    // Render initial buttons based on my favorite sea critters
+    function renderButtons() {
 
-    $("#buttons").empty();
+        $("#buttons").empty();
 
-    for (i = 0; i < topics.length; i++) {
+        for (i = 0; i < topics.length; i++) {
 
-      var critter = $("<button>");
+            var critter = $("<button>");
 
-      critter.text(topics[i]);
+            critter.addClass("topic");
 
-      $("#buttons").append(critter);
-    }
-  };
+            critter.attr("data-name", topics[i]);
 
-// Add new buttons that user chooses
-$("#submit-btn").on("click" , function (event) {
+            critter.text(topics[i]);
 
-    // Keep submit button from attempting to send form
-    event.preventDefault();
+            $("#buttons").append(critter);
+        }
+    };
 
-    var newCritter = $("#add-critter").val();
-    console.log(newCritter);
-    
-    topics.push(newCritter);
+    // Add new buttons that user chooses
+    $("#submit-btn").on("click", function(event) {
 
-    $("#add-critter").val("");
+        // Keep submit button from attempting to send form
+        event.preventDefault();
+
+        var newCritter = $("#add-critter").val().trim();
+
+        $("#add-critter").val("");
+
+        topics.push(newCritter);
+        
+        console.log(topics);
+
+        renderButtons();
+    })
+
+    // API request to get GIFs
+    function displayCritter() {
+        $(document).on("click", "#buttons", function() {
+            var critterName = $(this).attr("data-name");
+
+            var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=x0nChmNES8CLgpjub4kpEiRVLppBNyrz&q=" + critterName + "&limit=10";
+
+            $.ajax({
+                url: queryURL,
+                method: "GET"
+            }).then(function(response) {
+
+                console.log(topics);
+            });
+        });
+    };
 
     renderButtons();
-})
-
-  renderButtons();
 })
