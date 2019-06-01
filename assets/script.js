@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(function () {
 
     // VARIABLES
 
@@ -13,20 +13,20 @@ $(document).ready(function() {
 
         for (i = 0; i < topics.length; i++) {
 
-            var critter = $("<button>");
+            var critterBtn = $("<button>");
 
-            critter.addClass("topic");
+            critterBtn.addClass("topic");
 
-            critter.attr("data-name", topics[i]);
+            critterBtn.attr("data-name", topics[i]);
 
-            critter.text(topics[i]);
+            critterBtn.text(topics[i]);
 
-            $("#buttons").append(critter);
+            $("#buttons").append(critterBtn);
         }
     };
 
     // Add new buttons that user chooses
-    $("#submit-btn").on("click", function(event) {
+    $("#submit-btn").on("click", function (event) {
 
         // Keep submit button from attempting to send form
         event.preventDefault();
@@ -36,26 +36,46 @@ $(document).ready(function() {
         $("#add-critter").val("");
 
         topics.push(newCritter);
-        
+
         console.log(topics);
 
         renderButtons();
     })
 
     // API request to get GIFs
-        $(document).on("click", ".topic", function() {
-            var critterName = $(this).attr("data-name");
+    $(document).on("click", ".topic", function () {
+        var critterName = $(this).attr("data-name");
 
-            var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=x0nChmNES8CLgpjub4kpEiRVLppBNyrz&q=" + critterName + "&limit=10";
+        var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=x0nChmNES8CLgpjub4kpEiRVLppBNyrz&q=" + critterName + "&limit=10";
 
-            $.ajax({
-                url: queryURL,
-                method: "GET"
-            }).then(function(response) {
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+            console.log(queryURL);
+            console.log(response);
 
-                console.log(response);
-            });
+            // store the retrieved data
+            var critterData = response.data;
+
+            // Create divs for each GIF and rating
+            for (var i = 0; i < critterData.length; i++) {
+
+                var critterDiv = $("<div>");
+
+                var critterRating = $("<p>").text("Rating: " + critterData[i].rating);
+
+                var critterImage = $("<img>");
+
+                critterImage.attr("src", critterData[i].images.fixed_height_still.url);
+
+                critterDiv.append(critterRating);
+                critterDiv.append(critterImage);
+
+                $("#gif-col").prepend(critterDiv);
+            }
         });
+    });
 
     renderButtons();
 })
