@@ -43,8 +43,7 @@ $(document).ready(function() {
     })
 
     // API request to get GIFs
-    function displayCritter() {
-        $(document).on("click", "#buttons", function() {
+        $(document).on("click", ".topic", function() {
             var critterName = $(this).attr("data-name");
 
             var queryURL = "https://api.giphy.com/v1/gifs/search?api_key=x0nChmNES8CLgpjub4kpEiRVLppBNyrz&q=" + critterName + "&limit=10";
@@ -54,10 +53,9 @@ $(document).ready(function() {
                 method: "GET"
             }).then(function(response) {
 
-                console.log(topics);
+                console.log(response);
             });
         });
-    };
 
     renderButtons();
 })
