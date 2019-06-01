@@ -15,7 +15,7 @@ $(document).ready(function () {
 
             var critterBtn = $("<button>");
 
-            critterBtn.addClass("topic");
+            critterBtn.addClass("topic btn btn-secondary mr-3");
 
             critterBtn.attr("data-name", topics[i]);
 
