@@ -65,13 +65,18 @@ $(document).ready(function () {
 
                 critterDiv.addClass("critterDiv");
 
-                //critterDiv.css("float", "left");
-
                 var critterRating = $("<p>").text("Rating: " + critterData[i].rating);
 
                 var critterImage = $("<img>");
 
                 critterImage.attr("src", critterData[i].images.fixed_height_still.url);
+
+                //Assign data states to determine if still or animated
+                critterImage.attr("data-still", critterData[i].images.fixed_height_still.url);
+                critterImage.attr("data-animate", critterData[i].images.fixed_height.url);
+
+                critterImage.addClass("gif");
+                critterImage.attr("data-state", "still")
 
                 critterDiv.append(critterRating);
                 critterDiv.append(critterImage);
@@ -79,6 +84,24 @@ $(document).ready(function () {
                 $("#gif-col").prepend(critterDiv);
             }
         });
+    });
+
+    // Change GIF to animate or still
+    $(document).on("click", ".gif", function () {
+
+        var state = $(this).attr("data-state");
+        console.log(state);
+
+        if (state === "still") {
+
+            $(this).attr("src", $(this).attr("data-animate"));      
+            $(this).attr("data-state", "animate");
+        }
+        else {
+
+            $(this).attr("src", $(this).attr("data-still"));      
+            $(this).attr("data-state", "still");            
+        }
     });
 
     renderButtons();
