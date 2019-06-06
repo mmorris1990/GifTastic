@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     // VARIABLES
 
-    var topics = ["clown fish", "cuttlefish", "hermit crab", "jellyfish", "moray eel", "octopus", "puffer fish", "sea turtle", "stingray", "whale shark"];
+    var topics = ["sea horse", "cuttlefish", "hermit crab", "jellyfish", "moray eel", "octopus", "puffer fish", "sea turtle", "stingray", "whale shark"];
 
     // FUNCTIONS
 
